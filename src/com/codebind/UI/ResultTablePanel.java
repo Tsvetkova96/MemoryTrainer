@@ -15,7 +15,7 @@ public class ResultTablePanel extends JPanel {
      * Конструктор - создание нового объекта
      */
     public  ResultTablePanel() {
-        ArrayList<Result> results = Result.GetResultsFromFile();
+        ArrayList<Result> results = Result.getResultsFromFile();
         String[] columnNames = {"Дата",
                 "Результат",
                 "Тип символов",

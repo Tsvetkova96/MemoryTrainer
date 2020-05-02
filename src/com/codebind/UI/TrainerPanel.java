@@ -7,7 +7,7 @@ import com.codebind.Main;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Collections;
+
 /**
  * Класс вывода панели с таблицей для тренировки со свойствами <b>trainer</b>
  * @autor Цветкова
@@ -38,7 +38,7 @@ public class TrainerPanel extends JPanel  {
                             JOptionPane.showMessageDialog(null,"Поздравляем! Ваш результат " + time + " секунд");
                             String symbolType =  (String) Main.mainPanel.topBarPanel.symbolTypeComboBox.getSelectedItem();
                             String size =  (String) Main.mainPanel.topBarPanel.fieldSizeComboBox.getSelectedItem();
-                            FileHelper.WriteResultToFile(new Result("",time,symbolType,size));
+                            FileHelper.writeResultToFile(new Result("",time,symbolType,size));
                         } else {
                             Main.mainPanel.topBarPanel.setCurrentSymbolText("Нажмите " + trainer.getNextSymbol());
                         }

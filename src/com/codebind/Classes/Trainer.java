@@ -17,7 +17,6 @@ public class Trainer {
      */
     public Trainer(int size, String symbolType) {
         createsymbolSequence(size, symbolType);
-
         currentIndex = 0;
     }
     /**

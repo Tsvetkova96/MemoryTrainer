@@ -17,7 +17,7 @@ public class FileHelper {
     /**
      * Функция записи в файл результатов тренировки {@link FileHelper}
      */
-    public static void WriteResultToFile(Result result) {
+    public static void writeResultToFile(Result result) {
         try {
             File myObj = new File("result.txt");
             myObj.createNewFile();
@@ -35,7 +35,7 @@ public class FileHelper {
      * Функция чтения результатов тренировки из файла
      * @return возвращает строку со всеми результатами разделенными !!
      */
-    public static  String ReadResultFromFile() {
+    public static  String readResultFromFile() {
         String result = "";
         try {
             File myObj = new File("result.txt");

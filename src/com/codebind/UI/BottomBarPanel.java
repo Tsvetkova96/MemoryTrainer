@@ -1,6 +1,5 @@
 package com.codebind.UI;
 
-import com.codebind.Classes.Trainer;
 import com.codebind.Main;
 
 import javax.swing.*;
@@ -19,7 +18,7 @@ public class BottomBarPanel extends JPanel {
         JButton satrtButton = new JButton("Начать");
         satrtButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                newTraining();
+                startNewTraining();
             }
         });
         this.add(satrtButton);
@@ -37,7 +36,7 @@ public class BottomBarPanel extends JPanel {
     /**
      * Функция для начала новой тренировки
      */
-    void newTraining() {
+    void startNewTraining() {
         int size =Integer.parseInt(((String) Main.mainPanel.topBarPanel.fieldSizeComboBox.getSelectedItem()).split("x")[0]);
         String symbolType =((String) Main.mainPanel.topBarPanel.symbolTypeComboBox.getSelectedItem());
         Main.mainPanel.createNewTrainingPanel(size,symbolType);

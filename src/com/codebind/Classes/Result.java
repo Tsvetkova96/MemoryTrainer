@@ -32,9 +32,9 @@ public class Result {
      * Функция возвращает список всех результатов тренеровки
      * @return возвращает список всех  результатов тренеровки
      */
-    public static ArrayList<Result> GetResultsFromFile() {
+    public static ArrayList<Result> getResultsFromFile() {
         ArrayList<Result> list = new ArrayList<Result>();
-        String fileResulText = FileHelper.ReadResultFromFile();
+        String fileResulText = FileHelper.readResultFromFile();
         var results = fileResulText.split("!!");
         for (String row : results) {
             var resultString = row.split(";");
