@@ -20,6 +20,9 @@ public class TrainerPanel extends JPanel  {
                     String clickedButtonText = b.getText();
                     if(trainer.checkSymbol(clickedButtonText)) {
                         Main.mainPanel.topBarPanel.setCurrentSymbolText("Нажмите " + trainer.getNextSymbol());
+                        if(trainer.CheckEndTrainig()){
+                            
+                        }
                     }
                 }
             });
