@@ -7,12 +7,26 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
+/**
+ * Класс вывода верхней панели с инструментами со свойствами <b>currentSymbolText</b>, <b>stopWatchPane</b>, <b>fieldSizeComboBox</b>, <b>symbolTypeComboBox</b>
+ * @autor Цветкова
+ * @version 1.0
+ */
 public class TopBarPanel extends JPanel {
+    /** Поле текущий символ который необходимо нажать */
     JLabel currentSymbolText;
+    /** Поле с таймером тренировки */
     StopWatchPane stopWatchPane;
+    /** Поле выбора размера таблицы */
     JComboBox fieldSizeComboBox;
+    /** Поле выбора типа символов */
     JComboBox symbolTypeComboBox;
+    /**
+     * Конструктор - создание нового объекта с определенными значениями
+     * @param labelText - текст лейбла в которм отобразаются следующий для нажатия символ
+     * @param size - размер таблицы
+     * @param symbolType - тип символов
+     */
     public TopBarPanel(String labelText, String size, String symbolType) {
         this.setLayout(new GridLayout());
         createSymbolTypeComboBox(symbolType);
@@ -23,6 +37,11 @@ public class TopBarPanel extends JPanel {
         this.add(stopWatchPane);
         stopWatchPane.start();
     }
+    /**
+     * Функция создания нового комбо бокса для выбора размера таблицы в зависимости
+     * @param size размер, который будет выбран по умолчанию
+     * @symbolType тип сиволов. Если тип != "Цифры", по комбо бокс будет содержать значения 3x3, 4x4 и 5x5
+     */
     void createFieldSizeComboBox(String size, String symbolType) {
         ArrayList<String> items = new ArrayList<String>();
         if(Integer.parseInt(size.split("x")[0])  > 5) size =  symbolType.equals("Цифры") ? size : "5x5";
@@ -36,17 +55,24 @@ public class TopBarPanel extends JPanel {
         fieldSizeComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                onFieldSizeChange();
+                onComboBoxValueChanged();
             }
         });
     }
-    public void onFieldSizeChange() {
+    /**
+     * Функция вызывающаяся при имзменении размера таблицы или типа символов. Создает панель тренировки заново
+     */
+    private void onComboBoxValueChanged() {
         int size = Integer.parseInt(((String) fieldSizeComboBox.getSelectedItem()).split("x")[0]);
         String symbolType =((String) Main.mainPanel.topBarPanel.symbolTypeComboBox.getSelectedItem());
         if(size > 5) size =  symbolType.equals("Цифры") ? size : 5;
         Main.mainPanel.createNewTrainingPanel(size, symbolType);
         Main.mainPanel.creteNewTopPanel();
     }
+    /**
+     * Функция создания нового комбо бокса для выбора размера таблицы в зависимости
+     * @symbolType тип сиволов, который будет выбран по умолчанию
+     */
     void createSymbolTypeComboBox(String syboltype) {
         String[] items = {
                 "Цифры",
@@ -59,10 +85,13 @@ public class TopBarPanel extends JPanel {
         symbolTypeComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                onFieldSizeChange();
+                onComboBoxValueChanged();
             }
         });
     }
+    /**
+     * Процедура определения текущего символа который необходимо нажать {@link TopBarPanel#currentSymbolText}
+     */
     public void setCurrentSymbolText(String text) {
         currentSymbolText.setText(text);
     }

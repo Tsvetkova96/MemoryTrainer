@@ -1,15 +1,26 @@
 package com.codebind.UI;
 
 import com.codebind.Classes.FileHelper;
+import com.codebind.Classes.Result;
 import com.codebind.Classes.Trainer;
 import com.codebind.Main;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
-
+/**
+ * Класс вывода панели с таблицей для тренировки со свойствами <b>trainer</b>
+ * @autor Цветкова
+ * @version 1.0
+ */
 public class TrainerPanel extends JPanel  {
+    /** Поле для управления процессом тренировки */
     Trainer trainer;
+    /**
+     * Конструктор - создание нового объекта с определенными значениями
+     * @param size - размер таблицы
+     * @param symbolType - тип символов
+     */
     public TrainerPanel(int size, String symbolType) {
         setLayout(new java.awt.GridLayout(size, size));
         trainer = new Trainer(size * size, symbolType);
@@ -27,7 +38,7 @@ public class TrainerPanel extends JPanel  {
                             JOptionPane.showMessageDialog(null,"Поздравляем! Ваш результат " + time + " секунд");
                             String symbolType =  (String) Main.mainPanel.topBarPanel.symbolTypeComboBox.getSelectedItem();
                             String size =  (String) Main.mainPanel.topBarPanel.fieldSizeComboBox.getSelectedItem();
-                            FileHelper.WriteResultToFile(time,symbolType,size);
+                            FileHelper.WriteResultToFile(new Result("",time,symbolType,size));
                         } else {
                             Main.mainPanel.topBarPanel.setCurrentSymbolText("Нажмите " + trainer.getNextSymbol());
                         }
@@ -37,6 +48,10 @@ public class TrainerPanel extends JPanel  {
             add(b);
         }
     }
+    /**
+     * Функция возвращает следующий символ который необходимо нажать
+     * @return  возвращает следующий символ который необходимо нажать
+     */
     public String getNextSymbol() {
         return  trainer.getNextSymbol();
     }

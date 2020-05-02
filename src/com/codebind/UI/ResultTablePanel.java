@@ -5,8 +5,15 @@ import com.codebind.Classes.Result;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * Класс вывода панели с результатами тренировки.
+ * @autor Цветкова
+ * @version 1.0
+ */
 public class ResultTablePanel extends JPanel {
+    /**
+     * Конструктор - создание нового объекта
+     */
     public  ResultTablePanel() {
         ArrayList<Result> results = Result.GetResultsFromFile();
         String[] columnNames = {"Дата",

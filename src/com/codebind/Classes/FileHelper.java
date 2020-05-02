@@ -8,14 +8,22 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+/**
+ * Класс для работы с файлами
+ * @autor Цветкова
+ * @version 1.0
+ */
 public class FileHelper {
-    public static void WriteResultToFile(String timeResult, String symbolType, String size) {
+    /**
+     * Функция записи в файл результатов тренировки {@link FileHelper}
+     */
+    public static void WriteResultToFile(Result result) {
         try {
             File myObj = new File("result.txt");
             myObj.createNewFile();
             FileWriter myWriter = new FileWriter("result.txt", true);
 
-            myWriter.append(String.format("%s;%s;%s;%s" + System.lineSeparator(),getCurrentDate(),timeResult,symbolType, size));
+            myWriter.append(String.format("%s;%s;%s;%s" + System.lineSeparator(),getCurrentDate(),result.getTimeResult(),result.getSymbolType(), result.getSize()));
             myWriter.close();
 
         } catch (IOException e) {
@@ -23,7 +31,10 @@ public class FileHelper {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Функция чтения результатов тренировки из файла
+     * @return возвращает строку со всеми результатами разделенными !!
+     */
     public static  String ReadResultFromFile() {
         String result = "";
         try {
@@ -40,6 +51,10 @@ public class FileHelper {
         return result;
     }
 
+    /**
+     * Функция возвращающая текущую дату для записи в файл
+     * @return возвращает текущую дату
+     */
     private static String getCurrentDate() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();

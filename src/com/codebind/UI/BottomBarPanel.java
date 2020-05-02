@@ -1,11 +1,19 @@
 package com.codebind.UI;
 
+import com.codebind.Classes.Trainer;
 import com.codebind.Main;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * Класс вывода нижней панели с кнопками
+ * @autor Цветкова
+ * @version 1.0
+ */
 public class BottomBarPanel extends JPanel {
+    /**
+     * Конструктор - создание нового объекта
+     */
     public BottomBarPanel() {
         this.setLayout(new GridLayout());
         JButton satrtButton = new JButton("Начать");
@@ -26,6 +34,9 @@ public class BottomBarPanel extends JPanel {
         });
         this.add(resultButton);
     }
+    /**
+     * Функция для начала новой тренировки
+     */
     void newTraining() {
         int size =Integer.parseInt(((String) Main.mainPanel.topBarPanel.fieldSizeComboBox.getSelectedItem()).split("x")[0]);
         String symbolType =((String) Main.mainPanel.topBarPanel.symbolTypeComboBox.getSelectedItem());

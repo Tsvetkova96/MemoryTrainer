@@ -6,10 +6,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * Основной класс приложения со свойством <b>mainPanel</b>
+ * @autor Цветкова
+ * @version 1.0
+ */
 public class Main {
+    /** Полу вывода главной нанели содержащей все элементы интерфейса */
     public static MainPanel mainPanel;
-
+    /**
+     * Функция создающая интерфейс приложения
+     */
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
