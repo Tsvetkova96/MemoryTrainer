@@ -8,13 +8,23 @@ import java.awt.*;
 public class BottomBarPanel extends JPanel {
     public BottomBarPanel() {
         this.setLayout(new GridLayout());
-        JButton button = new JButton("Начать");
-        button.addActionListener(new java.awt.event.ActionListener() {
+        JButton satrtButton = new JButton("Начать");
+        satrtButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 newTraining();
             }
         });
-        this.add(button);
+        this.add(satrtButton);
+        JButton resultButton = new JButton("Таблица результатов");
+        resultButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                final JDialog frame = new JDialog((JFrame) SwingUtilities.getWindowAncestor(Main.mainPanel), "Таблица результатов", true);
+                frame.getContentPane().add(new ResultTablePanel());
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
+        this.add(resultButton);
     }
     void newTraining() {
         int size =Integer.parseInt(((String) Main.mainPanel.topBarPanel.fieldSizeComboBox.getSelectedItem()).split("x")[0]);
