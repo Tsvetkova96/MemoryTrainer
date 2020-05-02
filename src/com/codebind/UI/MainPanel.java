@@ -13,16 +13,16 @@ public class MainPanel extends JPanel {
     public BottomBarPanel bottomBarPanel;
     public MainPanel() {
         this.setLayout(new BorderLayout());
-        createNewTrainingPanel();
+        createNewTrainingPanel(5);
         creteNewTopPanel();
         bottomBarPanel = new BottomBarPanel();
         this.add(bottomBarPanel, BorderLayout.SOUTH);
     }
-    public void createNewTrainingPanel() {
+    public void createNewTrainingPanel(int size) {
         if(this.trainerPanel != null) {
             this.remove(Main.mainPanel.trainerPanel);
         }
-        TrainerPanel trainingPanel = new TrainerPanel(3);
+        TrainerPanel trainingPanel = new TrainerPanel(size);
         this.trainerPanel = trainingPanel;
         this.add(trainingPanel,BorderLayout.CENTER);
         this.revalidate();
