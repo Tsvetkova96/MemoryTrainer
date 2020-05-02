@@ -1,5 +1,7 @@
 package com.codebind;
 
+import com.codebind.UI.MainPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +12,7 @@ public class Main {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(new Dimension(1000, 800));
+        frame.add(new MainPanel());
         frame.setVisible(true);
     }
 }
