@@ -4,18 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Trainer {
-    ArrayList<String> ShulteTable;
+    ArrayList<String> symbolSequence;
     int currentIndex;
     public Trainer(int size) {
-        ShulteTable = new ArrayList<>();
+        symbolSequence = new ArrayList<>();
         for (int i = 1; i <= size; ++i) {
-            ShulteTable.add(String.valueOf(i));
+            symbolSequence.add(String.valueOf(i));
         }
-        Collections.shuffle(ShulteTable);
         currentIndex = 0;
     }
     public  boolean checkSymbol(String checkingSymbol) {
-        String currentSymbol = ShulteTable.get(currentIndex);
+        String currentSymbol = symbolSequence.get(currentIndex);
         if(currentSymbol.equals(checkingSymbol)){
             currentIndex++;
             return  true;
@@ -23,9 +22,15 @@ public class Trainer {
         return  false;
     }
     public boolean CheckEndTrainig() {
-        return currentIndex == ShulteTable.size();
+        return currentIndex == symbolSequence.size();
     }
     public ArrayList<String> getShulteTable() {
-        return  ShulteTable;
+        ArrayList<String> shulteTable = new ArrayList<String>();
+        shulteTable.addAll(symbolSequence);
+        Collections.shuffle(shulteTable);
+        return  shulteTable;
+    }
+    public String getNextSymbol() {
+        return  symbolSequence.get(currentIndex);
     }
 }
