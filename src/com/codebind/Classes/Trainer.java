@@ -33,6 +33,7 @@ public class Trainer {
         }
     }
     public  boolean checkSymbol(String checkingSymbol) {
+        if(currentIndex >= symbolSequence.size()) return  false;
         String currentSymbol = symbolSequence.get(currentIndex);
         if(currentSymbol.equals(checkingSymbol)){
             currentIndex++;

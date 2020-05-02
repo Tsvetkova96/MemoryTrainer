@@ -1,5 +1,6 @@
 package com.codebind.UI;
 
+import com.codebind.Classes.FileHelper;
 import com.codebind.Classes.Trainer;
 import com.codebind.Main;
 
@@ -24,6 +25,9 @@ public class TrainerPanel extends JPanel  {
                             timer.stop();
                             String time = timer.getTime();
                             JOptionPane.showMessageDialog(null,"Поздравляем! Ваш результат " + time + " секунд");
+                            String symbolType =  (String) Main.mainPanel.topBarPanel.symbolTypeComboBox.getSelectedItem();
+                            String size =  (String) Main.mainPanel.topBarPanel.fieldSizeComboBox.getSelectedItem();
+                            FileHelper.WriteResultToFile(time,symbolType,size);
                         } else {
                             Main.mainPanel.topBarPanel.setCurrentSymbolText("Нажмите " + trainer.getNextSymbol());
                         }
