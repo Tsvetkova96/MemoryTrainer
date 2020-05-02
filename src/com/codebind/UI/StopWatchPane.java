@@ -19,16 +19,7 @@ public class StopWatchPane extends JPanel {
         timer = new Timer(100, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                long runningTime = System.currentTimeMillis() - lastTickTime;
-                Duration duration = Duration.ofMillis(runningTime);
-                long hours = duration.toHours();
-                duration = duration.minusHours(hours);
-                long minutes = duration.toMinutes();
-                duration = duration.minusMinutes(minutes);
-                long millis = duration.toMillis();
-                long seconds = millis / 1000;
-                millis -= (seconds * 1000);
-                label.setText(String.format("%02d:%02d.%03d", minutes, seconds, millis));
+                label.setText(getTime());
             }
         });
 
@@ -45,6 +36,18 @@ public class StopWatchPane extends JPanel {
         gbc.weightx = 0;
         gbc.gridwidth = 1;
         gbc.gridx++;
+    }
+    public String getTime() {
+        long runningTime = System.currentTimeMillis() - lastTickTime;
+        Duration duration = Duration.ofMillis(runningTime);
+        long hours = duration.toHours();
+        duration = duration.minusHours(hours);
+        long minutes = duration.toMinutes();
+        duration = duration.minusMinutes(minutes);
+        long millis = duration.toMillis();
+        long seconds = millis / 1000;
+        millis -= (seconds * 1000);
+        return String.format("%02d:%02d.%03d", minutes, seconds, millis);
     }
     public void start() {
         lastTickTime = System.currentTimeMillis();

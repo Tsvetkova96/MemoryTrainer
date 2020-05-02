@@ -19,9 +19,13 @@ public class TrainerPanel extends JPanel  {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     String clickedButtonText = b.getText();
                     if(trainer.checkSymbol(clickedButtonText)) {
-                        Main.mainPanel.topBarPanel.setCurrentSymbolText("Нажмите " + trainer.getNextSymbol());
-                        if(trainer.CheckEndTrainig()){
-                            
+                        if(trainer.checkEndTrainig()){
+                            var timer =Main.mainPanel.topBarPanel.stopWatchPane;
+                            timer.stop();
+                            String time = timer.getTime();
+                            JOptionPane.showMessageDialog(null,"Поздравляем! Ваш результат " + time + " секунд");
+                        } else {
+                            Main.mainPanel.topBarPanel.setCurrentSymbolText("Нажмите " + trainer.getNextSymbol());
                         }
                     }
                 }

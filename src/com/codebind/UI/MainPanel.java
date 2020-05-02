@@ -10,7 +10,7 @@ public class MainPanel extends JPanel {
     public TopBarPanel topBarPanel;
     public MainPanel() {
         this.setLayout(new BorderLayout());
-        trainerPanel = new TrainerPanel(5);
+        trainerPanel = new TrainerPanel(3);
         topBarPanel = new TopBarPanel("Нажмите " + trainerPanel.getNextSymbol());
         this.add(topBarPanel, BorderLayout.NORTH);
         this.add(trainerPanel, BorderLayout.CENTER);

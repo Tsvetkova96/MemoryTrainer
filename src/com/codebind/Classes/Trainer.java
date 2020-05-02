@@ -21,7 +21,7 @@ public class Trainer {
         }
         return  false;
     }
-    public boolean CheckEndTrainig() {
+    public boolean checkEndTrainig() {
         return currentIndex == symbolSequence.size();
     }
     public ArrayList<String> getShulteTable() {
