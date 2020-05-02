@@ -9,9 +9,9 @@ import java.util.Collections;
 
 public class TrainerPanel extends JPanel  {
     Trainer trainer;
-    public TrainerPanel(int size) {
+    public TrainerPanel(int size, String symbolType) {
         setLayout(new java.awt.GridLayout(size, size));
-        trainer = new Trainer(size * size);
+        trainer = new Trainer(size * size, symbolType);
         ArrayList<String> tabel = trainer.getShulteTable();
         for (int i = 1; i <= size * size; ++i) {
             JButton b = new JButton(String.valueOf(tabel.get(i-1)));

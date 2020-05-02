@@ -17,8 +17,9 @@ public class BottomBarPanel extends JPanel {
         this.add(button);
     }
     void newTraining() {
-        int size =Integer.parseInt(((String) Main.mainPanel.topBarPanel.comboBox.getSelectedItem()).split("x")[0]);
-        Main.mainPanel.createNewTrainingPanel(size);
+        int size =Integer.parseInt(((String) Main.mainPanel.topBarPanel.fieldSizeComboBox.getSelectedItem()).split("x")[0]);
+        String symbolType =((String) Main.mainPanel.topBarPanel.symbolTypeComboBox.getSelectedItem());
+        Main.mainPanel.createNewTrainingPanel(size,symbolType);
         Main.mainPanel.creteNewTopPanel();
     }
 
