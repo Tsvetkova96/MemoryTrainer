@@ -6,6 +6,7 @@ import com.codebind.Classes.Trainer;
 import com.codebind.Main;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -27,6 +28,8 @@ public class TrainerPanel extends JPanel  {
         ArrayList<String> tabel = trainer.getShulteTable();
         for (int i = 1; i <= size * size; ++i) {
             JButton b = new JButton(String.valueOf(tabel.get(i-1)));
+            int fontSize = 280 / size;
+            b.setFont(new Font("Arial", Font.PLAIN, fontSize));
             b.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     String clickedButtonText = b.getText();
