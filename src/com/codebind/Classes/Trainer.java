@@ -8,7 +8,7 @@ public class Trainer {
     int currentIndex;
     public Trainer(int size) {
         ShulteTable = new ArrayList<>();
-        for (int i = 1; i <= size * size; ++i) {
+        for (int i = 1; i <= size; ++i) {
             ShulteTable.add(String.valueOf(i));
         }
         Collections.shuffle(ShulteTable);
@@ -24,5 +24,8 @@ public class Trainer {
     }
     public boolean CheckEndTrainig() {
         return currentIndex == ShulteTable.size();
+    }
+    public ArrayList<String> getShulteTable() {
+        return  ShulteTable;
     }
 }
