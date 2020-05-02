@@ -36,5 +36,4 @@ public class TrainerPanel extends JPanel  {
     public String getNextSymbol() {
         return  trainer.getNextSymbol();
     }
-
 }
