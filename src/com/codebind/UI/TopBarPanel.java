@@ -26,16 +26,18 @@ public class TopBarPanel extends JPanel {
      * @param labelText - текст лейбла в которм отобразаются следующий для нажатия символ
      * @param size - размер таблицы
      * @param symbolType - тип символов
+     * @param needStart - нужен ли запускать тренеровку. True только поле нажатия кнопки "Начать"
      */
-    public TopBarPanel(String labelText, String size, String symbolType) {
+    public TopBarPanel(String labelText, String size, String symbolType, boolean needStart) {
         this.setLayout(new GridLayout());
         createSymbolTypeComboBox(symbolType);
         createFieldSizeComboBox(size, symbolType);
         currentSymbolText = new JLabel(labelText);
+        currentSymbolText.setForeground(Color.RED);
         this.add(currentSymbolText);
         stopWatchPane = new StopWatchPane();
         this.add(stopWatchPane);
-        stopWatchPane.start();
+        if(needStart) stopWatchPane.start();
     }
     /**
      * Функция создания нового комбо бокса для выбора размера таблицы в зависимости
@@ -66,8 +68,8 @@ public class TopBarPanel extends JPanel {
         int size = Integer.parseInt(((String) fieldSizeComboBox.getSelectedItem()).split("x")[0]);
         String symbolType =((String) Main.mainPanel.topBarPanel.symbolTypeComboBox.getSelectedItem());
         if(size > 5) size =  symbolType.equals("Цифры") ? size : 5;
-        Main.mainPanel.createNewTrainingPanel(size, symbolType);
-        Main.mainPanel.creteNewTopPanel();
+        Main.mainPanel.createNewTrainingPanel(size, symbolType, false);
+        Main.mainPanel.creteNewTopPanel(false);
     }
     /**
      * Функция создания нового комбо бокса для выбора размера таблицы в зависимости

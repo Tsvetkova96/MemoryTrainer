@@ -25,8 +25,9 @@ public class TrainerPanel extends JPanel  {
      * Конструктор - создание нового объекта с определенными значениями
      * @param size - размер таблицы
      * @param symbolType - тип символов
+     * @param needStart - нужен ли запускать тренеровку. True только поле нажатия кнопки "Начать"
      */
-    public TrainerPanel(int size, String symbolType) {
+    public TrainerPanel(int size, String symbolType, boolean needStart) {
         setLayout(new java.awt.GridLayout(size, size));
         trainer = new Trainer(size * size, symbolType);
         ArrayList<String> tabel = trainer.getShulteTable();
@@ -34,6 +35,7 @@ public class TrainerPanel extends JPanel  {
             JButton b = new JButton(String.valueOf(tabel.get(i-1)));
             int fontSize = 280 / size;
             b.setFont(new Font("Arial", Font.PLAIN, fontSize));
+            b.setEnabled(needStart);
             b.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {

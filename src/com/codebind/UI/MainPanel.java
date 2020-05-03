@@ -21,8 +21,8 @@ public class MainPanel extends JPanel {
      */
     public MainPanel() {
         this.setLayout(new BorderLayout());
-        createNewTrainingPanel(5, "Цифры");
-        creteNewTopPanel();
+        createNewTrainingPanel(5, "Цифры", false);
+        creteNewTopPanel(false);
         bottomBarPanel = new BottomBarPanel();
         this.add(bottomBarPanel, BorderLayout.SOUTH);
     }
@@ -30,12 +30,13 @@ public class MainPanel extends JPanel {
      * Функция создает новую панель с таблицей для тренировки {@link MainPanel#trainerPanel}
      * @param size - размер таблицы
      * @param symbolType - тип символов
+     * @param needStart - нужен ли запускать тренеровку. True только поле нажатия кнопки "Начать"
      */
-    public void createNewTrainingPanel(int size, String  symbolType) {
+    public void createNewTrainingPanel(int size, String  symbolType, boolean needStart) {
         if(this.trainerPanel != null) {
             this.remove(Main.mainPanel.trainerPanel);
         }
-        TrainerPanel trainingPanel = new TrainerPanel(size, symbolType);
+        TrainerPanel trainingPanel = new TrainerPanel(size, symbolType, needStart);
         this.trainerPanel = trainingPanel;
         this.add(trainingPanel,BorderLayout.CENTER);
         this.revalidate();
@@ -43,8 +44,9 @@ public class MainPanel extends JPanel {
     }
     /**
      * Функция создает новую верхнюю панель инструментов {@link MainPanel#topBarPanel}
+     * @param needStart - нужен ли запускать тренеровку. True только поле нажатия кнопки "Начать"
      */
-    public void creteNewTopPanel() {
+    public void creteNewTopPanel(boolean needStart) {
         String prevfieldSize = "5x5";
         String prevSymbolType = "Цифры";
         if(this.topBarPanel != null) {
@@ -52,7 +54,7 @@ public class MainPanel extends JPanel {
             prevSymbolType = (String) Main.mainPanel.topBarPanel.symbolTypeComboBox.getSelectedItem();
             this.remove(this.topBarPanel);
         }
-        topBarPanel = new TopBarPanel("Нажмите " + trainerPanel.getNextSymbol(), prevfieldSize, prevSymbolType);
+        topBarPanel = new TopBarPanel("Нажмите " + trainerPanel.getNextSymbol(), prevfieldSize, prevSymbolType, needStart);
         this.topBarPanel = topBarPanel;
         this.add(topBarPanel, BorderLayout.NORTH);
         this.revalidate();
