@@ -19,6 +19,7 @@ public class Main {
      */
     public static void main(String[] args) {
         JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(new Dimension(1000, 800));
         mainPanel = new MainPanel();
