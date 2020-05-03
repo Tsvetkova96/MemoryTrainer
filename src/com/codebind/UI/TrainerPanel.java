@@ -41,7 +41,7 @@ public class TrainerPanel extends JPanel  {
                             JOptionPane.showMessageDialog(null,"Поздравляем! Ваш результат " + time + " секунд");
                             String symbolType =  (String) Main.mainPanel.topBarPanel.symbolTypeComboBox.getSelectedItem();
                             String size =  (String) Main.mainPanel.topBarPanel.fieldSizeComboBox.getSelectedItem();
-                            FileHelper.writeResultToFile(new Result("",time,symbolType,size));
+                            FileHelper.writeResultToFile(new Result("",time,size,symbolType));
                         } else {
                             Main.mainPanel.topBarPanel.setCurrentSymbolText("Нажмите " + trainer.getNextSymbol());
                         }
