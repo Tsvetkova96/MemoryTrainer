@@ -7,6 +7,10 @@ import com.codebind.Main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 
 /**
@@ -30,6 +34,14 @@ public class TrainerPanel extends JPanel  {
             JButton b = new JButton(String.valueOf(tabel.get(i-1)));
             int fontSize = 280 / size;
             b.setFont(new Font("Arial", Font.PLAIN, fontSize));
+            b.addComponentListener(new ComponentAdapter() {
+                @Override
+                public void componentResized(ComponentEvent e) {
+                    //System.out.println("Resized to " + e.getComponent().getSize());
+                    int fontSize = ((JButton)e.getSource()).getWidth() / 4;
+                    b.setFont(new Font("Arial", Font.PLAIN, fontSize));
+                }
+            });
             b.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     String clickedButtonText = b.getText();
